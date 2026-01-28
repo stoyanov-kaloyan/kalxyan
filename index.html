@@ -4,77 +4,302 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kalxyan — Web3 DApp Builder</title>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+      color: #f5f5f5;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 0;
+      position: relative;
+    }
+
+    /* Grainy texture */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' fill='white' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 24px 40px;
+      z-index: 100;
+      background: rgba(10, 10, 10, 0.7);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 0;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: lowercase;
+    }
+
+    .dot {
+      color: #00d4ff;
+      font-size: 18px;
+    }
+
+    /* Hero */
+    header {
+      margin-top: 100px;
+      padding: 80px 0;
+      text-align: left;
+    }
+
+    h1 {
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #a0a0a0;
+      max-width: 500px;
+    }
+
+    /* Sections */
+    section {
+      margin: 80px 0;
+      padding: 40px 0;
+    }
+
+    .outcomes {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .outcome-item {
+      padding: 24px;
+      border-left: 2px solid #00d4ff;
+      background: rgba(0, 212, 255, 0.04);
+      display: flex;
+      gap: 16px;
+    }
+
+    .outcome-label {
+      color: #00d4ff;
+      font-weight: 700;
+      min-width: 24px;
+      flex-shrink: 0;
+    }
+
+    .outcome-item strong {
+      color: #f5f5f5;
+    }
+
+    .outcome-item div {
+      color: #a0a0a0;
+    }
+
+    /* About */
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+      text-transform: lowercase;
+    }
+
+    .about p {
+      margin-bottom: 16px;
+      color: #a0a0a0;
+      line-height: 1.8;
+    }
+
+    /* CTA */
+    .cta {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 60px 0;
+    }
+
+    .cta h2 {
+      margin-bottom: 16px;
+    }
+
+    .cta-text {
+      color: #a0a0a0;
+      margin-bottom: 32px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 32px;
+      border: 1px solid #00d4ff;
+      background: transparent;
+      color: #00d4ff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      text-transform: lowercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: rgba(0, 212, 255, 0.1);
+    }
+
+    .btn-primary {
+      background: #00d4ff;
+      color: #0a0a0a;
+    }
+
+    .btn-primary:hover {
+      background: #0088cc;
+      border-color: #0088cc;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: #a0a0a0;
+      font-size: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 24px;
+      }
+
+      nav {
+        padding: 16px 24px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      header {
+        margin-top: 80px;
+        padding: 40px 0;
+      }
+
+      .btn-group {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
-  <svg style="display: none;">
-    <defs>
-      <filter id="noiseFilter">
-        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch" />
-      </filter>
-    </defs>
-  </svg>
-  
-  <nav class="nav">
-    <div class="nav-content">
+  <nav>
+    <div class="nav-inner">
       <span class="logo">kalxyan</span>
       <span class="dot">•</span>
     </div>
   </nav>
 
-  <header class="hero">
-    <div class="hero-content">
-      <h1>Ship production-ready web3 dApps<br>in 2–3 weeks.</h1>
+  <div class="container">
+    <header>
+      <h1>Ship production-ready web3 dApps in 2–3 weeks.</h1>
       <p class="subtitle">Build, audit, migrate. Solo builder. Fast iteration.</p>
-    </div>
-  </header>
+    </header>
 
-  <section class="outcomes">
-    <div class="outcome-item">
-      <span class="outcome-label">→</span>
-      <div>
-        <strong>Time saved.</strong> Cut integration time by 60%. Uniswap V4 hooks, token flows, deployment CI ready to go.
+    <section class="outcomes">
+      <div class="outcome-item">
+        <span class="outcome-label">→</span>
+        <div>
+          <strong>Time saved.</strong> Cut integration time by 60%. Uniswap V4 hooks, token flows, deployment CI ready to go.
+        </div>
       </div>
-    </div>
-    <div class="outcome-item">
-      <span class="outcome-label">→</span>
-      <div>
-        <strong>Bugs fixed.</strong> Audit-grade security reviews. Smart contract integrations tested and deployed.
+      <div class="outcome-item">
+        <span class="outcome-label">→</span>
+        <div>
+          <strong>Bugs fixed.</strong> Audit-grade security reviews. Smart contract integrations tested and deployed.
+        </div>
       </div>
-    </div>
-    <div class="outcome-item">
-      <span class="outcome-label">→</span>
-      <div>
-        <strong>Live migrations.</strong> Move from V3 to V4, Uniswap to custom AMM, legacy to modern stack. Zero downtime.
+      <div class="outcome-item">
+        <span class="outcome-label">→</span>
+        <div>
+          <strong>Live migrations.</strong> Move from V3 to V4, Uniswap to custom AMM, legacy to modern stack. Zero downtime.
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="about">
-    <h2>About</h2>
-    <p>
-      I build web3 infrastructure for teams shipping at speed.
-    </p>
-    <p>
-      Expertise: Uniswap V4 hooks, token integrations, smart contract audits, full-stack dApps, CI/CD for Solidity.
-    </p>
-    <p>
-      Recent: Spike integrations (1-week prototype + ship), migrations (V3→V4), audit & fix cycles.
-    </p>
-  </section>
+    <section class="about">
+      <h2>About</h2>
+      <p>I build web3 infrastructure for teams shipping at speed.</p>
+      <p>Expertise: Uniswap V4 hooks, token integrations, smart contract audits, full-stack dApps, CI/CD for Solidity.</p>
+      <p>Recent: Spike integrations (1-week prototype + ship), migrations (V3→V4), audit & fix cycles.</p>
+    </section>
 
-  <section class="cta">
-    <h2>Let's build.</h2>
-    <p>Request a free 30-minute audit. I'll send a prioritized checklist within 24 hours.</p>
-    <div class="cta-buttons">
-      <a href="https://calendly.com/kalxyan/30min" class="btn btn-primary">Book audit</a>
-      <a href="mailto:hello@kalxyan.dev" class="btn btn-secondary">Email me</a>
-    </div>
-  </section>
+    <section class="cta">
+      <h2>Let's build.</h2>
+      <p class="cta-text">Request a free 30-minute audit. I'll send a prioritized checklist within 24 hours.</p>
+      <div class="btn-group">
+        <a href="https://calendly.com/kalxyan/30min" class="btn btn-primary">Book audit</a>
+        <a href="mailto:hello@kalxyan.dev" class="btn btn-secondary">Email me</a>
+      </div>
+    </section>
 
-  <footer class="footer">
-    <p>© 2026 Kalxyan. Built for builders.</p>
-  </footer>
+    <footer>
+      <p>© 2026 Kalxyan. Built for builders.</p>
+    </footer>
+  </div>
 </body>
 </html>
