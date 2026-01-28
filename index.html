@@ -1,122 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>kaloyanx — Web3 dApp Builder</title>
-  <link rel="stylesheet" href="styles.css" />
-  <!-- Calendly inline widget -->
-  <script src="https://assets.calendly.com/assets/external/widget.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalxyan — Web3 DApp Builder</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="brand">kaloyanx</h1>
-      <nav class="nav">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="cta">Request Free 30-min Audit</a>
-      </nav>
+  <div class="grain"></div>
+  
+  <nav class="nav">
+    <div class="nav-content">
+      <span class="logo">kalxyan</span>
+      <span class="dot">•</span>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Ship production-ready web3 dApps<br>in 2–3 weeks.</h1>
+      <p class="subtitle">Build, audit, migrate. Solo builder. Fast iteration.</p>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <h2>Ship production-ready web3 dApps in 2-3 weeks</h2>
-          <p class="lead">Solo builder focused on shipping reliable smart contracts, audits, and migrations — fast.</p>
-
-          <ul class="outcomes">
-            <li><strong>Save time:</strong> Accelerate development cycles and launch sooner.</li>
-            <li><strong>Fix bugs:</strong> Reduce regressions with production-grade testing and audits.</li>
-            <li><strong>Live migrations:</strong> Migrate contracts and states safely with minimal downtime.</li>
-          </ul>
-
-          <div class="actions">
-            <a class="btn primary" href="#contact">Request Free 30-min Audit</a>
-            <a class="btn ghost" href="#about">Learn About Me</a>
-          </div>
-        </div>
-        <div class="hero-widget">
-          <div class="card">
-            <h3>Quick availability</h3>
-            <p>Pick a time for a free 30-minute audit.</p>
-            <!-- Calendly inline widget container -->
-            <div id="calendly-inline-widget" style="min-width:280px;height:560px;"></div>
-            <script type="text/javascript">
-              window.addEventListener('load', function(){
-                Calendly.initInlineWidget({
-                  url: 'https://calendly.com/your-calendly-username/30min',
-                  parentElement: document.getElementById('calendly-inline-widget'),
-                  prefill: {},
-                  utm: {}
-                });
-              });
-            </script>
-          </div>
-        </div>
+  <section class="outcomes">
+    <div class="outcome-item">
+      <span class="outcome-label">→</span>
+      <div>
+        <strong>Time saved.</strong> Cut integration time by 60%. Uniswap V4 hooks, token flows, deployment CI ready to go.
       </div>
-    </section>
-
-    <section id="work" class="work container">
-      <h3>Example outcomes</h3>
-      <div class="cards">
-        <article class="card small">
-          <h4>Time saved</h4>
-          <p>Delivered a full dApp stack in 2 weeks — front-end, smart contracts, and deployment — cutting launch time by 40%.</p>
-        </article>
-        <article class="card small">
-          <h4>Bugs fixed</h4>
-          <p>Found and resolved critical edge-case reentrancy and gas-logic bugs during auditing and testing phases.</p>
-        </article>
-        <article class="card small">
-          <h4>Live migrations</h4>
-          <p>Performed on-chain contract migrations with data preservation and minimal downtime for production systems.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="about" class="about container">
-      <h3>About</h3>
-      <p>I'm a solo web3 builder experienced with Uniswap V4 integrations, smart contract audits, and migrations. I focus on simple, secure, and well-tested production releases. Whether you need a fast MVP, an audit, or a migration plan — I can help.</p>
-    </section>
-
-    <section id="contact" class="contact container">
-      <h3>Request Free 30-min Audit</h3>
-      <p>Use the scheduler to choose a time. If you prefer, email: <a href="mailto:hello@kaloyanx.com">hello@kaloyanx.com</a></p>
-      <div class="contact-grid">
-        <div class="contact-calendly">
-          <!-- Reuse same Calendly embed for larger screens -->
-          <div id="calendly-inline-widget-2" style="min-width:280px;height:560px;"></div>
-          <script type="text/javascript">
-            window.addEventListener('load', function(){
-              Calendly.initInlineWidget({
-                url: 'https://calendly.com/your-calendly-username/30min',
-                parentElement: document.getElementById('calendly-inline-widget-2')
-              });
-            });
-          </script>
-        </div>
-        <form class="contact-form" action="#" onsubmit="alert('Thanks — please use the scheduler or email hello@kaloyanx.com'); return false;">
-          <label>Name<input type="text" name="name" required></label>
-          <label>Email<input type="email" name="email" required></label>
-          <label>Project brief<textarea name="message" rows="6"></textarea></label>
-          <button class="btn primary" type="submit">Request Free 30-min Audit</button>
-        </form>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> kaloyanx — Web3 dApp Builder • <a href="https://github.com/kaloyanx" target="_blank" rel="noopener">GitHub</a></p>
     </div>
-  </footer>
+    <div class="outcome-item">
+      <span class="outcome-label">→</span>
+      <div>
+        <strong>Bugs fixed.</strong> Audit-grade security reviews. Smart contract integrations tested and deployed.
+      </div>
+    </div>
+    <div class="outcome-item">
+      <span class="outcome-label">→</span>
+      <div>
+        <strong>Live migrations.</strong> Move from V3 to V4, Uniswap to custom AMM, legacy to modern stack. Zero downtime.
+      </div>
+    </div>
+  </section>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <section class="about">
+    <h2>About</h2>
+    <p>
+      I build web3 infrastructure for teams shipping at speed.
+    </p>
+    <p>
+      Expertise: Uniswap V4 hooks, token integrations, smart contract audits, full-stack dApps, CI/CD for Solidity.
+    </p>
+    <p>
+      Recent: Spike integrations (1-week prototype + ship), migrations (V3→V4), audit & fix cycles.
+    </p>
+  </section>
+
+  <section class="cta">
+    <h2>Let's build.</h2>
+    <p>Request a free 30-minute audit. I'll send a prioritized checklist within 24 hours.</p>
+    <div class="cta-buttons">
+      <a href="https://calendly.com/kalxyan/30min" class="btn btn-primary">Book audit</a>
+      <a href="mailto:hello@kalxyan.dev" class="btn btn-secondary">Email me</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 Kalxyan. Built for builders.</p>
+  </footer>
 </body>
 </html>
